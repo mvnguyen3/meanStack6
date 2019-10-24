@@ -115,20 +115,36 @@ router.post('/api/getUserCart',(req, res) =>{
   });  
 })
 
-
-
+// let description = "1 GHz Qualcomm QSD 8250 Scorpion (Snapdragon) 3.8\" 480 x 800";
+// let name = "Windows Phone 1";
+// let price = 329;
+// let rate = 5;
 // Get Product Experimental
 router.get('/api/products', (req, res) =>{
-  var products = [
-    {
-          "description": "1 GHz Qualcomm QSD 8250 Scorpion (Snapdragon) 3.8\" 480 x 800",
-          "name": "Windows Phone 1",
-          "price": 329,
-          "rate": 5,
-    },
-  ]
-    setTimeout(()=> {res.json(products);}, 1000);
+  productModel.find((err, products)=>{
+    if (err){
+      console.log("error")
+    }
+    // products will contains the whole collection of productModel db
+    products.map(product => (
+        console.log(product)
+      ))
+    res.json(products);
 });
+  });
+  
+
+  // var products = [
+  //   {
+  //         "description": productObject.description,
+  //         "name": productObject.name,
+  //         "price": productObject.price,
+  //         "rate": productObject.rate,
+  //   },
+  // ]
+   // res.json(productObject);
+    //setTimeout(()=> {res.json(products);}, 1000);
+
 
 //cart item update api's end
 /*
