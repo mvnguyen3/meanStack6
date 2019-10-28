@@ -8,10 +8,13 @@ export default class ProductDetails extends React.Component {
         this.state = {
             product:this.props.product,
             showDetails:false,
-            btnAddCart: 'Add To Cart'
+            btnAddCart: 'Add',
+            addItem:this.props.addItemFun
+
         }
     }
 
+    
     showProductDetails = ()=>{
         this.setState({
             showDetails:!this.state.showDetails
@@ -20,17 +23,21 @@ export default class ProductDetails extends React.Component {
 
     // Change the text on add to cart Btn
     btnAddMeth = () =>{
-        if(this.state.btnAddCart == 'Add To Cart'){
+        if(this.state.btnAddCart == 'Add'){
             this.setState({
-                btnAddCart: 'Remove From Cart'
+                btnAddCart: 'Added To cart'
             })
+
+            // Add item to cart 
+            // Working on ...
+            this.state.addItem = this.props.addItemFun;
+
             alert('Added ' + this.state.product.productName + ' To Cart'); 
+
                        
         }else{
-            this.setState({
-                btnAddCart: 'Add To Cart'
-            })
-            alert('Removed ' + this.state.product.productName + ' From Cart');
+            alert('Product is already added!!');
+           
         }
     }
 
@@ -45,7 +52,8 @@ export default class ProductDetails extends React.Component {
                         <li>Description: {this.state.product.pDescription}</li>
                         <li>Price: ${this.state.product.pPrice}</li>
                         <li>Rate: {this.state.product.pRating} stars</li>      
-                        <button onClick={this.btnAddMeth}>{this.state.btnAddCart}</button>                 
+                        <button onClick={this.btnAddMeth}>{this.state.btnAddCart}</button>      
+                        <button onClick={this.state.addItem}>TEST</button>           
                     </ul>
                                                                  
                     :

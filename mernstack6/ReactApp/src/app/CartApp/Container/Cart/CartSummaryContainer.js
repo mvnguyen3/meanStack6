@@ -1,5 +1,6 @@
 import {connect} from 'react-redux';
 import CartSummary from "../../Component/Cart/CartSummaryComponent";
+import {addItem} from "../../State/Actions";
 
 function recalculate(items){
     console.log("RECALCULATE ", items)
@@ -17,9 +18,18 @@ function recalculate(items){
     }
 }
 
+
 const mapStateToProps = (state) => {
-    let result = recalculate(state.cart);
-    return {...result};
+   let result = recalculate(state.cart);
+    return {
+       
+        ...result
+    };
 }
+// let mapDispatchToProps = (dispatch) => {
+//     return{
+      
+//     }
+// }
 
 export default connect(mapStateToProps, null)(CartSummary);

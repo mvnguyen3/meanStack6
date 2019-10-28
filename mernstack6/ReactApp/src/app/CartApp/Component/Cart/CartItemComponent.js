@@ -28,35 +28,37 @@ export default class CartItem extends Component{
         !this.props.donotrender ? this.inputElem.focus():"";
      }
 
+
+     // Make changed
     render() {
         console.log("CartItem render", this.props.item.id);         
         let {item} = this.props;
-        return(
+        return(            
             <tr>
-                <td>{item.name}</td>
-                <td>{item.price}
-                   <p ref="discount"> </p>
-                </td>
-                {!this.props.donotrender ?<td>
-                   <input value={this.state.qty} 
-                          type="number"
-                          onChange={this.onChangeText}
-                          ref = {(elem) => this.inputElem = elem}
-                   />   
-                </td> : 
-                <td>{item.qty}</td>}
-                <td> {item.price * item.qty} </td>
-                {!this.props.donotrender ?
-                    <td>
-                        <button onClick={() => this.props.actions.updateItem(item.id, this.state.qty)}>
-                            Update
-                        </button>
-                        <button onClick={() => this.props.actions.removeItem(item.id)}>
-                            Remove
-                        </button>
-                    </td> :""
-                }
-            </tr>
+            <td>{item.name}</td>
+            <td>{item.price}
+               <p ref="discount"> </p>
+            </td>
+            {!this.props.donotrender?<td>
+               <input value={this.state.qty} 
+                      type="number"
+                      onChange={this.onChangeText}
+                      ref = {(elem) => this.inputElem = elem}
+               />   
+            </td> : 
+            <td>{item.qty}</td>}
+            <td> {item.price * item.qty} </td>
+            {!this.props.donotrender ?
+                <td>
+                    <button onClick={() => this.props.actions.updateItem(item.id, this.state.qty)}>
+                        Update
+                    </button>
+                    <button onClick={() => this.props.actions.removeItem(item.id)}>
+                        Remove
+                    </button>
+                </td> :""
+            }
+        </tr>    
         )
     }
 }

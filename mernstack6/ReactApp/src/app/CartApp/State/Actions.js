@@ -73,8 +73,10 @@ export const addItem = (item) => ({
     }
 })
 
+
 export const empty = () => ({
     type: ActionTypes.EMPTY_CART
+    
 })
 
 export const removeItem = (id) => ({

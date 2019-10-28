@@ -15,7 +15,10 @@ let mapStateToProps = (state) => {
 // Called by Cart component
 let mapDispatchToProps = (dispatch) => {
     return{
-        addItem:()=>{
+        // addItemFunc:()=>{
+        //     alert('hahaha');
+        // },
+        addItemFunc:()=>{
             let id = Math.ceil(Math.random() * 10000);
             let item = {
                 id,
@@ -23,9 +26,10 @@ let mapDispatchToProps = (dispatch) => {
                 price: Math.ceil(Math.random() * 100),
                 qty: 1
             }
-            const action = addItem(item);
-            dispatch(action);
+
+            dispatch(addItem(item));
         },
+       
         empty: bindActionCreators(empty, dispatch),
         // empty: () =>{
         //     dispatch(empty)
